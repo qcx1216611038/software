@@ -22,6 +22,34 @@
 <link href="http://fonts.googleapis.com/css?family=Oswald:300,400,700&amp;subset=latin-ext" rel="stylesheet">
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
 </head>
+
+<?php
+   if(isset($_FILES['uploadedFile'])){
+      $errors= array();
+      $file_name = $_FILES['uploadedFile']['name'];
+      $file_size = $_FILES['uploadedFile']['size'];
+      $file_tmp = $_FILES['uploadedFile']['tmp_name'];
+      $file_type = $_FILES['uploadedFile']['type'];
+      $file_ext=strtolower(end(explode('.',$_FILES['uploadedFile']['name'])));
+
+      $extensions= array("jpeg","jpg","png");
+
+      if(in_array($file_ext,$extensions)=== false){
+         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+      }
+
+      if($file_size > 2097152) {
+         $errors[]='File size must be excately 2 MB';
+      }
+
+      if(empty($errors)==true) {
+         move_uploaded_file($file_tmp,"upload/".$file_name);
+         echo "Success";
+      }else{
+         print_r($errors);
+      }
+   }
+?>
 	
 <body>
 <!-- header -->
