@@ -44,10 +44,35 @@
                     <nav class="link-effect-12">
                         <ul class="nav navbar-nav w3_agile_nav">
                             <li><a href="index.html"><span>主页</span></a></li>
-                            <li><a href="organization.html"><span>组织机构</span></a></li>
-                            <li class="active"><a href="chairmen.html"><span>会议主席</span></a></li>
-                            <li><a href="reporters.html"><span>特邀报告</span></a></li>
-                            <li><a href="schedule.html"><span>会议日程</span></a></li>
+                            <form id="upload-form">
+    <label for="file-input">选择文件：</label>
+    <input type="file" id="file-input" name="file">
+    <br>
+    <button type="submit">上传文件</button>
+  </form>
+  
+  <script>
+    var form = document.getElementById('upload-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();  // 阻止表单默认提交
+      
+      var fileInput = document.getElementById('file-input');
+      var file = fileInput.files[0];  // 获取文件对象
+      
+      var formData = new FormData();
+      formData.append('file', file);  // 添加文件到formData对象
+      
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'http://localhost:8080/upload');  // 发送POST请求到上传文件的后台接口
+      xhr.send(formData);  // 发送表单数据
+      
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log('文件上传成功', xhr.responseText);
+        }
+      };
+    });
+  </script>
                         </ul>
 
                     </nav>
