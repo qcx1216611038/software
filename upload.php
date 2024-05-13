@@ -1,4 +1,4 @@
-<?php
+<script language="php">
    if(isset($_FILES['uploadedFile'])){
       $errors= array();
       $file_name = $_FILES['uploadedFile']['name'];
@@ -24,4 +24,4 @@
          print_r($errors);
       }
    }
-?>
+      </script>
