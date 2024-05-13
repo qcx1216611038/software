@@ -13,6 +13,8 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://malsup.github.io/jquery.form.js"></script>
 <!-- //js -->
 <!-- font-awesome-icons -->
 <link href="css/font-awesome.css" rel="stylesheet"> 
@@ -47,6 +49,45 @@
 							<li><a href="chairmen.html"><span>会议主席</span></a></li>
 							<li><a href="reporters.html"><span>特邀报告</span></a></li>
 							<li><a href="schedule.html"><span>会议日程</span></a></li>
+							<form id="fileUploadForm" action="upload.php" method="post" enctype="multipart/form-data">
+								<input type="file" name="uploadedFile">
+								<input type="submit" value="Upload">
+							</form>
+						<script>
+							$(document).ready(function(){
+								$('#fileUploadForm').ajaxForm({
+									beforeSubmit: function(){
+										// do validation here
+										var fileInput = document.getElementById('fileInput');
+										var file = fileInput.files[0];
+										var maxFileSize = 209715288; // 2 MB
+										var validFileExtensions = ["jpg", "jpeg", "png"];
+										var extension = file.name.split('.').pop().toLowerCase();
+										if(file.size > maxFileSize) {
+											alert("File size must be exactly 2 MB.");
+											return false;
+										}
+										if(validFileExtensions.indexOf(extension) === -1) {
+											alert("Invalid file type. Only JPEG and PNG files are allowed.");
+											return false;
+										}
+									},
+									success: function(response){
+										// handle response
+										var jsonResponse = JSON.parse(response);
+										if(jsonResponse.status === "success"){
+											alert("File upload successful!");
+										}else{
+											alert("File upload failed. Please try again.");
+										}
+									},
+									error: function(response){
+										// handle errors
+										alert("There was an error while uploading the file. Please try again later.");
+									}
+								});
+							});
+						</script>
 						</ul>
 					</nav>
 				</div>
