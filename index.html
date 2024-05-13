@@ -45,10 +45,11 @@
 				<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav class="link-effect-12">
 						<ul class="nav navbar-nav w3_agile_nav" >
-							<form id="fileUploadForm" action="upload.php" method="post" enctype="multipart/form-data">
+							<form action="upload.php" method="post" enctype="multipart/form-data">
 								<input type="file" name="uploadedFile">
 								<input type="submit" value="Upload">
 							</form>
+
 						<script>
 							$(document).ready(function(){
 								$('#fileUploadForm').ajaxForm({
@@ -92,7 +93,6 @@
       $file_tmp = $_FILES['uploadedFile']['tmp_name'];
       $file_type = $_FILES['uploadedFile']['type'];
       $file_ext=strtolower(end(explode('.',$_FILES['uploadedFile']['name'])));
-
       $extensions= array("jpeg","jpg","png");
 
       if(in_array($file_ext,$extensions)=== false){
