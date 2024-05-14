@@ -51,12 +51,19 @@
 			</form><br>
 			<b>HTML</b><br>
 			<b>CSS</b><br>
-			<input type="file" id="imageUpload" accept="image/*" />
-			<button onclick="uploadImage()">Upload</button>
-			<script src="js/script.js"></script>
+			<form id="uploadForm">
+				<input type="file" id="fileInput" name="file" />
+				<button type="button" onclick="uploadFile()">上传</button>
+			</form>
+    
+
+    <script src="script.js"></script>
 		</div>
 		<div id="content" style="background-color:#EEEEEE;height:600px;width:1300px;float:left;">
 			<h2>数据集内容在这里</h2>
+			<div id="fileDisplay">
+				
+			</div>
 		</div>
 		<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
 			版权 © QCX
