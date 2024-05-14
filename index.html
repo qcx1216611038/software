@@ -47,23 +47,29 @@
 		<div id="menu" style="background-color:#989898;height:600px;width:200px;float:left;">
 			<form id="uploadForm">
 				<input type="file" id="fileInput" name="file" />
-				<button type="button" onclick="uploadFile()">上传文件</button>
+				<button type="submit">上传</button>
 			</form>
-			<div id="response"></div>
+			<div id="response">
+				
+			</div>	
 			<script>
-				function uploadFile() {
+				document.getElementById('uploadForm').addEventListener('submit', function(event) {
+					event.preventDefault();
 					var fileInput = document.getElementById('fileInput');
 					var formData = new FormData();
-					formData.append('file', fileInput.files[0]);
-					var xhr = new XMLHttpRequest();
-					xhr.open('POST', 'upload.php', true);
-					xhr.onreadystatechange = function () {
-						if (xhr.readyState == 4 && xhr.status == 200) {
-							document.getElementById('response').innerText = xhr.responseText;
-						}
-					};
-					xhr.send(formData);
-				}
+					formData.append('file', fileInput.files[0]);			
+					fetch('upload.php', {
+						method: 'POST',
+						body: formData
+					})
+						.then(response => response.text())
+						.then(data => {
+							document.getElementById('response').innerText = data;
+						})
+						.catch(error => {
+							document.getElementById('response').innerText = '上传出错: ' + error;
+						});
+				});
 			</script>
 			<b>HTML</b><br>
 			<b>CSS</b><br>
