@@ -1,6 +1,6 @@
 <?php
 // 设置上传文件的目录
-$uploadDir = 'uploads/';
+$uploadDir = 'upload/';
 
 // 检查目录是否存在，如果不存在则创建
 if (!is_dir($uploadDir)) {
