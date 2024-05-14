@@ -8,9 +8,9 @@ if (isset($_FILES['file'])) {
     $fileName = $_FILES['file']['name'];
     $fileTmpPath = $_FILES['file']['tmp_name'];
     $fileSize = $_FILES['file']['size'];
-
-    // 此处可以添加文件大小的验证
-    if ($fileSize < 5000000) {
+    $fileError = $_FILES['file']['error'];
+    
+    if ($fileError === UPLOAD_ERR_OK) {
         $destinationPath = $uploadDir . $fileName;
         if (move_uploaded_file($fileTmpPath, $destinationPath)) {
             echo "文件上传成功！";
@@ -18,7 +18,7 @@ if (isset($_FILES['file'])) {
             echo "文件上传失败！";
         }
     } else {
-        echo "文件过大！";
+        echo "上传出错！错误码：" . $fileError;
     }
 } else {
     echo "没有文件被上传！";
