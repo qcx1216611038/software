@@ -11,19 +11,7 @@
 <!-- //custom-theme -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<style>
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 分成两列 */
-    grid-template-rows: 1fr 1fr; /* 分成两行 */
-  }
-  
-  .grid-item {
-    border: 1px solid black; /* 边框，便于观察 */
-    text-align: center; /* 文字居中 */
-    padding: 10px; /* 内边距 */
-  }
-</style>
+
 <!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -87,14 +75,9 @@
 			<button type="button" onclick="uploadFile()"><span>&nbsp&nbsp&nbsp&nbspSave&nbsp&nbsp&nbsp</span></button></br>
 			<h4>————————————————</h4>
 		</div>
-		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1300px;float:left;">
-			<div class="grid-item" style="grid-area: 1 / 1;">上左
-				<div id="fileDisplay">	
-				</div>
-			</div>
-			<div class="grid-item" style="grid-area: 1 / 2;">上右</div>
-			<div class="grid-item" style="grid-area: 2 / 1;">下左</div>
-			<div class="grid-item" style="grid-area: 2 / 2;">下右</div>
+		<div id="fileDisplay">
+		</div>
+			
 			
 		</div>
 		<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
