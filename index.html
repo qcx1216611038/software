@@ -11,7 +11,19 @@
 <!-- //custom-theme -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-
+<style>
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 分成两列 */
+    grid-template-rows: 1fr 1fr; /* 分成两行 */
+  }
+  
+  .grid-item {
+    border: 1px solid black; /* 边框，便于观察 */
+    text-align: center; /* 文字居中 */
+    padding: 10px; /* 内边距 */
+  }
+</style>
 <!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
