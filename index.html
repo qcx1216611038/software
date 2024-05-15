@@ -31,10 +31,12 @@
 	<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 					<nav class="link-effect-12">
 						<ul class="nav navbar-nav w3_agile_nav" >
-							<li><a href="index.html"><span>导入数据</span></a></li>
-							<li><a href="organization.html"><span>方法选择</span></a></li>
-							<li><a href="chairmen.html"><span>运行结果</span></a></li>
-							
+							<li><a href="index.html"><span>Preprocess</span></a></li>
+							<li><a href="organization.html"><span>Classify</span></a></li>
+							<li><a href="chairmen.html"><span>Cluster</span></a></li>
+							<li><a href="reporters.html"><span>Associate</span></a></li>
+							<li><a href="schedule.html"><span>Select attribute</span></a></li>
+							<li><a href="index.html"><span>Visualize</span></a></li>
 						</ul>
 					</nav>
 				</div>
@@ -47,12 +49,16 @@
 		<div id="menu" style="background-color:#989898;height:600px;width:200px;float:left;">
 			<form id="uploadForm">
 				<input type="file" id="fileInput" name="file" />
-				<button type="button" onclick="uploadFile()">上传</button>
+				<button type="button" onclick="uploadFile()">upload</button>
 			</form>
 			<script src="js/script.js">
 				
 			</script>
-			<b>HTML</b><br>
+			<form name="input" action="html_form_action.php" method="get">
+				<input type="text" name="user">
+				Open URL
+				<input type="submit" value="Submit">
+			</form>
 			<b>CSS</b><br>
 			<form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
 				<input type="file" name="file" />
