@@ -48,31 +48,45 @@
 			<h1 style="margin-bottom:0;">上传数据集</h1>
 		</div> 
 		<div id="menu" style="background-color:#989898;height:600px;width:300px;float:left;">
-			<form id="uploadForm">
-				<input type="file" id="fileInput" name="file" />
-				<button type="button" onclick="uploadFile()">upload</button></br>
+			<form action="/" method="post">
+				<label for="country">Cluster:</label>
+				<select id="classifier" name="classifier">
+					<option value="ZeroR">ZeroR</option>
+					<option value="CSEC">CSEC</option>
+					<option value="csvw">csvw</option>
+				</select>
+				<input type="submit" value="choose">
+				<br>
 			</form>
 			<h4>———————————————</h4>
 			<script src="js/script.js">
 				
 			</script>
-			<form name="input" action="html_form_action.php" method="get">
-				<input type="text" name="user">
-				<input type="submit" value="submit">
-				Open URL &nbsp&nbsp&nbsp</br>
+			<form action="">
+				<fieldset>
+					<legend>Cluster mode:</legend>			
+					<input type="radio" name="training set" value="use">Use training set<br>
+					<input type="radio" name="supply" value="Supplied test set">Supplied test set"<button type="button" onclick="">Set</button></br>
+					<input type="radio" name="Percentage" value="Percentage">Percentage split&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp % <input type="text" name="percentage"><br>
+					<input type="radio" name="Classes" value="Classes">Classes to clusters evaluation<br>
+					<input type="checkbox" id="subscribe" name="subscribe" checked>
+					<label for="subscribe">Store clusters for visualization</label>
+					<input type="submit" value="submit">
+				</fieldset>
 			</form>
 			<h4>———————————————</h4>
-			<form name="input" action="html_action.php" method="get">
-				<input type="text" name="user">
-				<input type="submit" value="submit">
-				Open DB &nbsp&nbsp&nbsp</br>
+			<form>
+				
 			</form>
-			<h4>———————————————</h4>
 			
 		</div>
-		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
+		<div id="content" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
 			<div id="fileDisplay">
-			</div>
+				
+			</div>	
+		</div>
+			
+			
 		</div>
 		<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
 			版权 © QCX
