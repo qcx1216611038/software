@@ -49,7 +49,7 @@
 		</div> 
 		<div id="menu" style="background-color:#989898;height:600px;width:300px;float:left;">
 			<form action="/" method="post">
-				<label for="country">Classifier:</label>
+				<label for="country">Attribute Evaluator:</label>
 				<select id="classifier" name="classifier">
 					<option value="ZeroR">ZeroR</option>
 					<option value="CSEC">CSEC</option>
@@ -63,7 +63,7 @@
 				
 			</script>
 			<form action="/" method="post">
-				<label for="country">Classifier:</label>
+				<label for="country">Search Method:</label>
 				<select id="classifier" name="classifier">
 					<option value="ZeroR">ZeroR</option>
 					<option value="CSEC">CSEC</option>
@@ -75,7 +75,7 @@
 			<h4>————————————————</h4>
 			<form action="">
 				<fieldset>
-					<legend>Test options:</legend>			
+					<legend>Attribute Selection Mode:</legend>			
 					<input type="radio" name="use" value="use">Use full training set<br>
 					<input type="radio" name="Cross-validation" value="Cross">Cross-validation<br>
 					Folds<input type="text" name="fold"><br>
@@ -85,7 +85,7 @@
 			</form>
 			<h4>————————————————</h4>
 			<form>
-				<label for="country"></label>
+				<label for="country">No class:</label>
 				<select id="classifier" name="classifier">
 					<option value="aquatic">aquatic</option>
 					<option value="predator">predator</option>
@@ -94,7 +94,12 @@
 				<input type="submit" value="choose">
 				<br>
 			</form>
-			
+			<h4>————————————————</h4>
+			<form>
+				
+				&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <button type="button" onclick=""><span>&nbsp&nbsp Start &nbsp&nbsp</span></button>&nbsp&nbsp<button type="button" onclick=""><span>&nbsp&nbsp Stop &nbsp&nbsp</span></button><br>
+			</form>
+			<h4>————————————————</h4>
 		</div>
 		<div id="content" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
 			<div id="fileDisplay">
