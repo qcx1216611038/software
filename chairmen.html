@@ -11,19 +11,7 @@
 <!-- //custom-theme -->
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<style>
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 分成两列 */
-    grid-template-rows: 1fr 1fr; /* 分成两行 */
-  }
-  
-  .grid-item {
-    border: 1px solid black; /* 边框，便于观察 */
-    text-align: center; /* 文字居中 */
-    padding: 10px; /* 内边距 */
-  }
-</style>
+
 <!-- js -->
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -59,12 +47,12 @@
 		<div id="header" style="background-color:#FFA500;">
 			<h1 style="margin-bottom:0;">上传数据集</h1>
 		</div> 
-		<div id="menu" style="background-color:#989898;height:600px;width:200px;float:left;">
+		<div id="menu" style="background-color:#989898;height:600px;width:300px;float:left;">
 			<form id="uploadForm">
 				<input type="file" id="fileInput" name="file" />
 				<button type="button" onclick="uploadFile()">upload</button></br>
 			</form>
-			<h4>————————————————</h4>
+			<h4>———————————————</h4>
 			<script src="js/script.js">
 				
 			</script>
@@ -73,29 +61,18 @@
 				<input type="submit" value="submit">
 				Open URL &nbsp&nbsp&nbsp</br>
 			</form>
-			<h4>————————————————</h4>
+			<h4>———————————————</h4>
 			<form name="input" action="html_action.php" method="get">
 				<input type="text" name="user">
 				<input type="submit" value="submit">
 				Open DB &nbsp&nbsp&nbsp</br>
 			</form>
-			<h4>————————————————</h4>
-			<button type="button" onclick="uploadFile()">Generate</button></br>
-			<h4>————————————————</h4>
-			<button type="button" onclick="uploadFile()"><span>&nbsp&nbsp&nbsp&nbspEdit&nbsp&nbsp&nbsp&nbsp</span></button></br>
-			<h4>————————————————</h4>
-			<button type="button" onclick="uploadFile()"><span>&nbsp&nbsp&nbsp&nbspSave&nbsp&nbsp&nbsp</span></button></br>
-			<h4>————————————————</h4>
-		</div>
-		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1300px;float:left;">
-			<div class="grid-item" style="grid-area: 1 / 1;">上左
-				<div id="fileDisplay">	
-				</div>
-			</div>
-			<div class="grid-item" style="grid-area: 1 / 2;">上右</div>
-			<div class="grid-item" style="grid-area: 2 / 1;">下左</div>
-			<div class="grid-item" style="grid-area: 2 / 2;">下右</div>
+			<h4>———————————————</h4>
 			
+		</div>
+		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
+			<div id="fileDisplay">
+			</div>
 		</div>
 		<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
 			版权 © QCX
