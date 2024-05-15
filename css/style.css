@@ -26,6 +26,17 @@ input[type="submit"],input[type="reset"],a,.w3ls_services_grid,.w3ls_footer_grid
     -o-transition: 0.5s ease-in;
     transition:0.5s ease-in;
 }
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 分成两列 */
+    grid-template-rows: 1fr 1fr; /* 分成两行 */
+  }
+  
+  .grid-item {
+    border: 1px solid black; /* 边框，便于观察 */
+    text-align: center; /* 文字居中 */
+    padding: 10px; /* 内边距 */
+  }
 /*-- header --*/
 .header{
 	padding:.5em 0;
