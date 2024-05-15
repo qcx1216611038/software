@@ -47,35 +47,16 @@
 		<div id="menu" style="background-color:#989898;height:600px;width:200px;float:left;">
 			<form id="uploadForm">
 				<input type="file" id="fileInput" name="file" />
-				<button type="submit">上传</button>
+				<button type="button" onclick="uploadFile()">上传</button>
 			</form>
-			<div id="response">
+			<script src="js/script.js">
 				
-			</div>	
-			<script>
-				document.getElementById('uploadForm').addEventListener('submit', function(event) {
-					event.preventDefault();
-					var fileInput = document.getElementById('fileInput');
-					var formData = new FormData();
-					formData.append('file', fileInput.files[0]);			
-					fetch('upload.php', {
-						method: 'POST',
-						body: formData
-					})
-						.then(response => response.text())
-						.then(data => {
-							document.getElementById('response').innerText = data;
-						})
-						.catch(error => {
-							document.getElementById('response').innerText = '上传出错: ' + error;
-						});
-				});
 			</script>
 			<b>HTML</b><br>
 			<b>CSS</b><br>
 			<form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
 				<input type="file" name="file" />
-				<input type="submit" value="上传文件" />
+				<input type="submit" value="upload" />
 			</form>
 		</div>
 		<div id="content" style="background-color:#EEEEEE;height:600px;width:1300px;float:left;">
