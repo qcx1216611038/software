@@ -86,29 +86,24 @@
 			<h4>————————————————</h4>
 			<button type="button" onclick="uploadFile()"><span>&nbsp&nbsp&nbsp&nbspSave&nbsp&nbsp&nbsp</span></button></br>
 			<h4>————————————————</h4>
-			<form id="uploadForm">
-				<input type="file" id="fileInput" name="file" />
-				<button type="submit">上传</button>
-			</form>
-			
+			 <form id="uploadForm">
+				 <input type="file" id="fileInput" name="file" />
+				 <button type="button" onclick="uploadFile()">上传</button>
+			 </form>					
 			<script>
-				document.getElementById('uploadForm').addEventListener('submit', function(event) {
-					event.preventDefault();
+				function uploadFile() {
 					var fileInput = document.getElementById('fileInput');
 					var formData = new FormData();
 					formData.append('file', fileInput.files[0]);
-					fetch('upload.php', {
-						method: 'POST',
-						body: formData
-					})
-						.then(response => response.text())
-						.then(data => {
-							document.getElementById('response').innerText = data;
-						})
-						.catch(error => {
-							document.getElementById('response').innerText = '上传出错: ' + error;
-						});
-				});
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'upload.php', true);
+					xhr.onreadystatechange = function () {
+						if (xhr.readyState == 4 && xhr.status == 200) { 
+							document.getElementById('response').innerText = xhr.responseText;
+						}
+					};
+					xhr.send(formData);
+				}
 			</script>
 		</div>
 		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
