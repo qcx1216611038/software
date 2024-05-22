@@ -86,13 +86,40 @@
 			<h4>————————————————</h4>
 			<button type="button" onclick="uploadFile()"><span>&nbsp&nbsp&nbsp&nbspSave&nbsp&nbsp&nbsp</span></button></br>
 			<h4>————————————————</h4>
+			<form id="uploadForm">
+				<input type="file" id="fileInput" name="file" />
+				<button type="submit">上传</button>
+			</form>
+			
+			<script>
+				document.getElementById('uploadForm').addEventListener('submit', function(event) {
+					event.preventDefault();
+					var fileInput = document.getElementById('fileInput');
+					var formData = new FormData();
+					formData.append('file', fileInput.files[0]);
+					fetch('upload.php', {
+						method: 'POST',
+						body: formData
+					})
+						.then(response => response.text())
+						.then(data => {
+							document.getElementById('response').innerText = data;
+						})
+						.catch(error => {
+							document.getElementById('response').innerText = '上传出错: ' + error;
+						});
+				});
+			</script>
 		</div>
 		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
 			<div class="grid-item" style="grid-area: 1 / 1;">上左
 				<div id="fileDisplay">	
 				</div>
 			</div>
-			<div class="grid-item" style="grid-area: 1 / 2;">上右</div>
+			<div class="grid-item" style="grid-area: 1 / 2;">上右
+				<div id="response">			
+				</div>
+			</div>
 			<div class="grid-item" style="grid-area: 2 / 1;">下左</div>
 			<div class="grid-item" style="grid-area: 2 / 2;">下右</div>
 			
