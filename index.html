@@ -90,6 +90,33 @@
 				 <input type="file" name="file" />
 				 <input type="submit" value="上传文件" />
 			 </form>
+			<h4>————————————————</h4>
+			<form id="copyForm">
+				<input type="text" id="source" placeholder="Enter source file path" required />
+				<input type="text" id="destination" placeholder="Enter destination directory path" required />
+				<button type="button" onclick="copyFile()">Copy File</button>
+			</form>
+			<div id="response"></div>
+			<script>
+				function copyFile() {
+					var source = document.getElementById('source').value;
+					var destination = document.getElementById('destination').value;					
+					fetch('/copy', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({ source: source, destination: destination })
+					})
+						.then(response => response.json())
+						.then(data => {
+							document.getElementById('response').innerText = data.message;
+						})
+						.catch(error => {
+							document.getElementById('response').innerText = 'Error: ' + error;
+						});
+				}
+			</script>
 		</div>
 		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
 			<div class="grid-item" style="grid-area: 1 / 1;">上左
