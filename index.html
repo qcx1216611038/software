@@ -91,9 +91,9 @@
 				 <input type="submit" value="上传文件" />
 			 </form>
 			<h4>————————————————</h4>
-			 <form method=post enctype=multipart/form-data>
-				 <input type=file name=file>
-				 <input type=submit value=Upload>
+			 <form action="/upload" method="post" enctype="multipart/form-data">
+				 <input type="file" name="file" />
+				 <input type="submit" value="Upload" />
 			 </form>
 			<pre>
 				from flask import Flask, request			
