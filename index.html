@@ -95,6 +95,20 @@
 				 <input type=file name=file>
 				 <input type=submit value=Upload>
 			 </form>
+			<pre>
+				from flask import Flask, request			
+				@app.route('/upload', methods=['POST'])
+				def upload_file():
+					if 'file' not in request.files:
+						return 'No file part'
+				file = request.files['file']
+				if file.filename == '':
+					return 'No selected file'
+				if file:
+					filename = file.filename
+					file.save(os.path.join('/upload', filename))
+				return 'File uploaded successfully'
+			</pre>
 		</div>
 		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
 			<div class="grid-item" style="grid-area: 1 / 1;">上左
