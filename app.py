@@ -1,30 +1,34 @@
-from flask import Flask, request, render_template, flash, redirect
+from flask import Flask, request, render_template_string
+from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # 用于保持会话安全
+app.config['UPLOAD_FOLDER'] = 'upload/'
 
-@app.route('/')
-def index():
-    # 使用flash来传递消息
-    return render_template('index.html', message=flash('message'))
+# 确保上传文件夹存在
+os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 
-@app.route('/upload', methods=['POST'])
+# 允许上传的文件扩展名
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif','arff'}
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/', methods=['GET', 'POST'])
 def upload_file():
-    if 'file' not in request.files:
-        flash('没有文件部分')
-        return redirect('/')
-    file = request.files['file']
-    if file.filename == '':
-        flash('没有选择文件')
-        return redirect('/')
-    if file:
-        # 指定上传文件夹
-        save_path = 'uploads/' + file.filename
-        file.save(save_path)
-        flash('文件上传成功')
-        return redirect('/')
-    flash('上传失败')
-    return redirect('/')
+    if request.method == 'POST':
+        # 检查是否有文件在请求中
+        if 'file' not in request.files:
+            return 'No file part'
+        file = request.files['file']
+        # 如果用户没有选择文件，浏览器可能会提交一个没有文件名的空部分
+        if file.filename == '':
+            return 'No selected file'
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            return render_template_string('index.html', filename=filename)
+    return render_template_string('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
