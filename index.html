@@ -91,33 +91,11 @@
 				 <input type="submit" value="上传文件" />
 			 </form>
 			<h4>————————————————</h4>
-			<form id="copyForm">
-				<input type="text" id="fileName" placeholder="输入文件名" required />
-				<input type="text" id="sourcePath" placeholder="输入源文件路径" required />
-				<input type="text" id="destinationPath" placeholder="输入目标文件夹路径" required />
-				<button type="button" onclick="copyFile()">复制文件</button>
-			</form>
-			<script>
-				function copyFile() {
-					var fileName = document.getElementById('fileName').value;
-					var sourcePath = document.getElementById('sourcePath').value;
-					var destinationPath = document.getElementById('destinationPath').value;					
-					fetch('copy_file.php', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						body: JSON.stringify({ fileName: fileName, sourcePath: sourcePath, destinationPath: destinationPath })
-					})
-						.then(response => response.json())
-						.then(data => {
-							document.getElementById('response').innerText = data.message;
-						})
-						.catch(error => {
-							document.getElementById('response').innerText = '发生错误: ' + error;
-						});
-				}
-			</script>
+			 <form action="/upload" method="post" enctype="multipart/form-data">
+				 <input type="file" name="file" required />
+				 <input type="submit" value="上传文件" />
+			 </form>
+			
 		</div>
 		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
 			<div class="grid-item" style="grid-area: 1 / 1;">上左
