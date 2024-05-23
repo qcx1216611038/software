@@ -103,7 +103,10 @@
 				</div>
 			</div>
 			<div class="grid-item" style="grid-area: 1 / 2;">上右
-				<div id="response">			
+				<div>
+					{% if message %}
+					<p>{{ message }}</p>
+					{% endif %}
 				</div>
 			</div>
 			<div class="grid-item" style="grid-area: 2 / 1;">下左</div>
