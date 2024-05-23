@@ -1,25 +1,30 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, flash, redirect
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # 用于保持会话安全
 
 @app.route('/')
 def index():
-    # 渲染并显示 upload.html 表单
-    return render_template('index.html')
+    # 使用flash来传递消息
+    return render_template('index.html', message=flash('message'))
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
     if 'file' not in request.files:
-        return '没有文件部分', 400
+        flash('没有文件部分')
+        return redirect('/')
     file = request.files['file']
     if file.filename == '':
-        return '没有选择文件', 400
+        flash('没有选择文件')
+        return redirect('/')
     if file:
         # 指定上传文件夹
-        save_path = 'upload/' + file.filename
+        save_path = 'uploads/' + file.filename
         file.save(save_path)
-        return '文件上传成功', 200
-    return '上传失败', 500
+        flash('文件上传成功')
+        return redirect('/')
+    flash('上传失败')
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)
