@@ -76,7 +76,7 @@
 			<h4>————————————————</h4>
 			<form id="uploadForm" enctype="multipart/form-data">
 				<input type="file" name="file" id="fileInput">
-				<input type="button" value="Upload File" onclick="uploadfile()">
+				<input type="button" value="Upload File" onclick="uploadfile()" formaction="http://localhost:8000" method="post">>
 			</form>
 			<pre id="pythonCodeDisplay"></pre>
 			<script src="js/upload.js"></script>
