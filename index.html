@@ -74,10 +74,30 @@
 			<h4>————————————————</h4>
 			<button type="button" onclick="uploadFile()"><span>&nbsp&nbsp&nbsp&nbspSave&nbsp&nbsp&nbsp</span></button></br>
 			<h4>————————————————</h4>
-			<form method="post" enctype="multipart/form-data" action="upload.cgi">
-				<input type="file" name="file" id="file"><br>
-				<input type="submit" value="Upload File" name="submit">
+			<form id="uploadForm" enctype="multipart/form-data">
+				<input type="file" name="file" id="fileInput">
+				<input type="button" value="Upload File" onclick="uploadfile()">
 			</form>
+			<pre id="pythonCodeDisplay"></pre>
+			<script>
+				// JavaScript 用于触发文件上传
+				function uploadfile() {
+					var fileInput = document.getElementById('fileInput');
+					var file = fileInput.files[0];
+					var formData = new FormData();
+					formData.append('file', file);
+					var xhr = new XMLHttpRequest();
+					xhr.open('POST', 'upload.py', true);
+					xhr.onload = function () {
+						if (xhr.status === 200) {
+							document.getElementById('pythonCodeDisplay').innerText = xhr.responseText;
+						} else {
+							console.error(xhr.responseText);
+						}
+					};
+					xhr.send(formData);
+				}
+			</script>
 		</div>
 		<div id="content" class="grid-container" style="background-color:#EEEEEE;height:600px;width:1200px;float:left;">
 			<div class="grid-item" style="grid-area: 1 / 1;">上左
